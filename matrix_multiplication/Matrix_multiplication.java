@@ -6,21 +6,21 @@ public class Matrix_multiplication {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int numLinhasMatriz1, numColunasMatriz1, numLinhasMatriz2, numColunasMatriz2;
+		int numLinesMatrix1, numColumnsMatrix1, numLinesMatrix2, numColumnsMatrix2;
 		
 		System.out.println("Informe a quantidade de linhas da primeira matriz: ");
-		numLinhasMatriz1 = sc.nextInt();
+		numLinesMatrix1 = sc.nextInt();
 		
 		System.out.println("\nInforme a quantidade de colunas da primeira matriz: ");
-		numColunasMatriz1 = sc.nextInt();
+		numColumnsMatrix1 = sc.nextInt();
 		
 		System.out.println("\nInforme a quantidade de linhas da segunda matriz: ");
-		numLinhasMatriz2 = sc.nextInt();
+		numLinesMatrix2 = sc.nextInt();
 		
 		System.out.println("\nInforme a quantidade de colunas da segunda matriz: ");
-		numColunasMatriz2 = sc.nextInt();
+		numColumnsMatrix2 = sc.nextInt();
 		
-		if(numColunasMatriz1 != numLinhasMatriz2) {
+		if(numColumnsMatrix1 != numLinesMatrix2) {
 			System.out.println("Não é possível realizar a operação de multiplicação entre as matrizes, haja vista que o número de colunas da primeira difere do número de linhas da segunda.");
 			return;
 		}
@@ -28,73 +28,73 @@ public class Matrix_multiplication {
 		
 		System.out.println(" \n ------------------------------------ \n ");
 		
-		double[][] matriz1 = new double[numLinhasMatriz1][numColunasMatriz1];
-		double[][] matriz2 = new double[numLinhasMatriz2][numColunasMatriz2];
+		double[][] matrix1 = new double[numLinesMatrix1][numColumnsMatrix1];
+		double[][] matrix2 = new double[numLinesMatrix2][numColumnsMatrix2];
 		
-		for(int i = 0; i < numLinhasMatriz1; i++) {
-			for(int j = 0; j < numColunasMatriz1; j++) {
+		for(int i = 0; i < numLinesMatrix1; i++) {
+			for(int j = 0; j < numColumnsMatrix1; j++) {
 				System.out.println("\nPara a primeira matriz, informe o valor contido na linha " + (i + 1) + " coluna " + (j + 1) + ":");
-				matriz1[i][j] = sc.nextDouble();
+				matrix1[i][j] = sc.nextDouble();
 			}
 		}
 		
 		System.out.println(" \n ------------------------------------ \n ");
 		
-		for(int i = 0; i < numLinhasMatriz2; i++) {
-			for(int j = 0; j < numColunasMatriz2; j++) {
+		for(int i = 0; i < numLinesMatrix2; i++) {
+			for(int j = 0; j < numColumnsMatrix2; j++) {
 				System.out.println("\nPara a segunda matriz, informe o valor contido na linha " + (i + 1) + " coluna " + (j + 1) + ":");
-				matriz2[i][j] = sc.nextDouble();
+				matrix2[i][j] = sc.nextDouble();
 			}
 		}
 		
 		System.out.println(" \n ------------------------------------ \n ");
 		System.out.println(" Resultado:  \n ");
 		
-		double[][] resultado = new double[numLinhasMatriz1][numColunasMatriz2];
+		double[][] result = new double[numLinesMatrix1][numColumnsMatrix2];
 		
-		for(int i = 0; i < numLinhasMatriz1; i++) {
-			for(int j = 0; j < numColunasMatriz2; j++) {
-				resultado[i][j] = singleResultElement(getLine(matriz1, i), getColumn(matriz2, j));
+		for(int i = 0; i < numLinesMatrix1; i++) {
+			for(int j = 0; j < numColumnsMatrix2; j++) {
+				result[i][j] = singleResultElement(getLine(matrix1, i), getColumn(matrix2, j));
 			}
 		}
 		
-		printMatriz(matriz1);
+		printMatriz(matrix1);
 		System.out.println("     X \n");
-		printMatriz(matriz2);
+		printMatriz(matrix2);
 		System.out.println("    ||\n");
-		printMatriz(resultado);
+		printMatriz(result);
 	}
 	
-	public static double[] getLine(double[][] matriz, int linha) {
-		double[] vetor = new double[matriz[0].length];
-		for(int i = 0; i < matriz[0].length; i++ ) {
-			vetor[i] = matriz[linha][i]; 
+	public static double[] getLine(double[][] matrix, int line) {
+		double[] vetor = new double[matrix[0].length];
+		for(int i = 0; i < matrix[0].length; i++ ) {
+			vetor[i] = matrix[line][i]; 
 		}
 		return vetor;
 	}
 	
-	public static double[] getColumn(double[][] matriz, int coluna) {
-		double[] vetor = new double[matriz.length];
-		for(int i = 0; i < matriz.length; i++ ) {
-			vetor[i] = matriz[i][coluna]; 
+	public static double[] getColumn(double[][] matrix, int column) {
+		double[] vetor = new double[matrix.length];
+		for(int i = 0; i < matrix.length; i++ ) {
+			vetor[i] = matrix[i][column]; 
 		}
 		return vetor;
 	}
 	
-	public static double singleResultElement(double[] linha, double[] coluna) {
+	public static double singleResultElement(double[] line, double[] column) {
 		double result = 0;
 		
-		for(int i = 0; i < linha.length; i++) {
-			result += linha[i] * coluna[i];
+		for(int i = 0; i < line.length; i++) {
+			result += line[i] * column[i];
 		}
 		
 		return result;
 	}
 	
-	public static void printMatriz (double[][] matriz) {
-		for(int i = 0; i < matriz.length; i++) {
-			for(int j = 0; j < matriz[0].length; j++) {
-				System.out.print(" " + matriz[i][j] + " ");
+	public static void printMatriz (double[][] matrix) {
+		for(int i = 0; i < matrix.length; i++) {
+			for(int j = 0; j < matrix[0].length; j++) {
+				System.out.print(" " + matrix[i][j] + " ");
 			}
 			System.out.println(" \n ");
 		}
