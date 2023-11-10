@@ -28,12 +28,19 @@ public class Responsavel {
     }
     
     public void validate() {
-        double age = Double.parseDouble(this.respAge);
-        if(age >= 18){
-            this.isValid = true;
+        
+        if(respAge != null && !respAge.isBlank() && respAge.matches("[0-9]*")) {
+            double age = Double.parseDouble(this.respAge);
+            if(age >= 18){
+                this.isValid = true;
+            } else {
+                this.isValid = false;
+            }
         } else {
             this.isValid = false;
         }
+        
+
     }
 
     public String getRespName() {

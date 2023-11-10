@@ -4,6 +4,8 @@
  */
 package mapapsii.views;
 
+import javax.swing.JOptionPane;
+import mapapsii.dom.Crianca;
 import mapapsii.dom.Responsavel;
 
 /**
@@ -161,7 +163,14 @@ public class CriancaView extends javax.swing.JFrame {
     }//GEN-LAST:event_kidSexActionPerformed
 
     private void avancar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avancar2ActionPerformed
-        // TODO add your handling code here:
+        Crianca crianca = new Crianca(responsavel, kidName.getText(), kidSex.getText(), kidAge.getText());
+        crianca.validate();
+        if(crianca.getIsValid()) {
+            EstadiaView estadiaView = new EstadiaView(crianca);
+            estadiaView.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "A criança deve ter uma idade menor ou igual a 10!!!");
+        }
     }//GEN-LAST:event_avancar2ActionPerformed
 
     /**
