@@ -11,18 +11,18 @@ package mapapsii.dom;
 public class Responsavel {
     private String respName;
     private String respTel;
-    private String respAdress;
+    private String respAddress;
     private String respCPF;
     private String respEmail;
     private String respAge;
     
     private boolean isValid;
     
-    public Responsavel(String respName, String respTel, String respAdress, String respCPF, String respEmail, String respAge) {
+    public Responsavel(String respName, String respTel, String respAddress, String respCPF, String respEmail, String respAge) {
         this.respName = respName;
         this.respTel = respTel;
         this.respCPF = respCPF;
-        this.respAdress = respAdress;
+        this.respAddress = respAddress;
         this.respEmail = respEmail;
         this.respAge = respAge;
     }
@@ -51,8 +51,8 @@ public class Responsavel {
         return respTel;
     }
 
-    public String getRespAdress() {
-        return respAdress;
+    public String getRespAddress() {
+        return respAddress;
     }
 
     public String getRespCPF() {

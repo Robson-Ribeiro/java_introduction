@@ -4,6 +4,8 @@
  */
 package mapapsii.views;
 
+import mapapsii.dom.Estadia;
+
 /**
  *
  * @author A
@@ -13,6 +15,25 @@ public class MessageView extends javax.swing.JFrame {
     /**
      * Creates new form MessageView
      */
+    
+    private Estadia estadia;
+    
+    public MessageView(Estadia estadia) {
+        this.estadia = estadia;
+        initComponents();
+        respName.setText("Nome Responsável: " + estadia.getCrianca().getResponsavel().getRespName());
+        respCPF.setText("CPF Responsável: " + estadia.getCrianca().getResponsavel().getRespCPF());
+        respTel.setText("Telefone Responsável: " + estadia.getCrianca().getResponsavel().getRespTel());
+        respAddress.setText("Endereço Responsável: " + estadia.getCrianca().getResponsavel().getRespAddress());
+        respEmail.setText("Email Responsável: " + estadia.getCrianca().getResponsavel().getRespEmail());
+        respAge.setText("Idade Responsável: " + estadia.getCrianca().getResponsavel().getRespAge());
+        nameKid.setText("Nome Criança: " + estadia.getCrianca().getName());
+        ageKid.setText("Idade Criança: " + estadia.getCrianca().getAge());
+        sex.setText("Sexo Criança: " + estadia.getCrianca().getSex());
+        time.setText("Tempo no Brinquedo: " + estadia.getTime());
+        price.setText("Valor a Pagar: " + String.valueOf(estadia.serviceCost()));
+    }
+    
     public MessageView() {
         initComponents();
     }
@@ -26,32 +47,131 @@ public class MessageView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        respName = new javax.swing.JLabel();
+        respCPF = new javax.swing.JLabel();
+        respTel = new javax.swing.JLabel();
+        respEmail = new javax.swing.JLabel();
+        respAddress = new javax.swing.JLabel();
+        respAge = new javax.swing.JLabel();
+        nameKid = new javax.swing.JLabel();
+        price = new javax.swing.JLabel();
+        ageKid = new javax.swing.JLabel();
+        sex = new javax.swing.JLabel();
+        time = new javax.swing.JLabel();
+        ok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel1.setText("Dados da Estadia");
+        title.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        title.setText("Dados da Estadia");
+
+        respName.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        respName.setText("Dados da Estadia");
+
+        respCPF.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        respCPF.setText("Dados da Estadia");
+
+        respTel.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        respTel.setText("Dados da Estadia");
+
+        respEmail.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        respEmail.setText("Dados da Estadia");
+
+        respAddress.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        respAddress.setText("Dados da Estadia");
+
+        respAge.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        respAge.setText("Dados da Estadia");
+
+        nameKid.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        nameKid.setText("Dados da Estadia");
+
+        price.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        price.setText("Dados da Estadia");
+
+        ageKid.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        ageKid.setText("Dados da Estadia");
+
+        sex.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        sex.setText("Dados da Estadia");
+
+        time.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        time.setText("Dados da Estadia");
+
+        ok.setBackground(new java.awt.Color(230, 240, 250));
+        ok.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        ok.setText("OK");
+        ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(price)
+                            .addComponent(time)
+                            .addComponent(sex)
+                            .addComponent(ageKid)
+                            .addComponent(nameKid)
+                            .addComponent(respAge)
+                            .addComponent(respAddress)
+                            .addComponent(respEmail)
+                            .addComponent(respTel)
+                            .addComponent(respCPF)
+                            .addComponent(respName)
+                            .addComponent(title)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(ok)))
                 .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addComponent(title)
+                .addGap(18, 18, 18)
+                .addComponent(respName)
+                .addGap(18, 18, 18)
+                .addComponent(respCPF)
+                .addGap(18, 18, 18)
+                .addComponent(respTel)
+                .addGap(18, 18, 18)
+                .addComponent(respEmail)
+                .addGap(18, 18, 18)
+                .addComponent(respAddress)
+                .addGap(18, 18, 18)
+                .addComponent(respAge)
+                .addGap(18, 18, 18)
+                .addComponent(nameKid)
+                .addGap(18, 18, 18)
+                .addComponent(ageKid)
+                .addGap(18, 18, 18)
+                .addComponent(sex)
+                .addGap(18, 18, 18)
+                .addComponent(time)
+                .addGap(18, 18, 18)
+                .addComponent(price)
+                .addGap(18, 18, 18)
+                .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+        dispose();
+    }//GEN-LAST:event_okActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,6 +209,18 @@ public class MessageView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel ageKid;
+    private javax.swing.JLabel nameKid;
+    private javax.swing.JButton ok;
+    private javax.swing.JLabel price;
+    private javax.swing.JLabel respAddress;
+    private javax.swing.JLabel respAge;
+    private javax.swing.JLabel respCPF;
+    private javax.swing.JLabel respEmail;
+    private javax.swing.JLabel respName;
+    private javax.swing.JLabel respTel;
+    private javax.swing.JLabel sex;
+    private javax.swing.JLabel time;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

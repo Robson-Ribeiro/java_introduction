@@ -136,7 +136,7 @@ public class EstadiaView extends javax.swing.JFrame {
         Estadia estadia = new Estadia(crianca, time.getText());
         estadia.validate();
         if(estadia.getIsValid()) {
-            MessageView messageView = new MessageView();
+            MessageView messageView = new MessageView(estadia);
             messageView.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "É necessário informar um tempo válido!!!");
