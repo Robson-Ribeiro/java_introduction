@@ -10,7 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class CsvApp {
-	// C:\\CSV\\doacoes.csv
 	public static void main(String[] args) {
 		int option;
 		String filePath = "";
@@ -175,4 +174,3 @@ public class CsvApp {
 	}
 	
 }
-// C:\\CSV\\doacoes.csv
