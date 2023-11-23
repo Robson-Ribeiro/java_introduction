@@ -1,7 +1,9 @@
 package csvApp;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.FileWriter;
@@ -14,7 +16,17 @@ public class CsvApp {
 		String filePath = "";
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Seja bem vindo! Informe o caminho e nome do arquivo CSV: ");
-		filePath = sc.nextLine();
+		File log = null;
+		
+		do {
+			filePath = sc.nextLine();
+			
+			 log = new File(filePath);
+			 if(log.exists()==false) {
+				 System.out.println("\nCaminho/nome incorreto! Informe o caminho e o nome do arquivo novamente: ");
+			 }
+		} while(log.exists() == false);
+		
 		
 		do {
 			showMenu();
@@ -28,7 +40,7 @@ public class CsvApp {
 			switch(option) {
 				case 1:
 					
-					read(filePath);
+					readFile(filePath);
 					System.out.println("\nAperte Enter para continuar...");
 					try {
 						System.in.read();
@@ -58,7 +70,7 @@ public class CsvApp {
 					content += ",";
 					System.out.println("Informe a quantidade em ml de sangue doado: ");
 					content += sc.next();
-					write(filePath, content);
+					writeLine(filePath, content);
 					System.out.println("\nAperte Enter para continuar...");
 					try {
 						System.in.read();
@@ -67,8 +79,17 @@ public class CsvApp {
 					}
 					break;
 					
-				case 3: 
-					
+				case 3:
+					String donationCode;
+					System.out.println("\nInforme o código da doação que deseja deletar: ");
+					donationCode = sc.next();
+					deleteLine(filePath, donationCode);
+					System.out.println("\nAperte Enter para continuar...");
+					try {
+						System.in.read();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					break;
 					
 				case 9:
@@ -76,6 +97,7 @@ public class CsvApp {
 			}
 		} while(option != 9);
 
+		sc.close();
 		System.out.println("\nAplicação finalizada!");
 		return;
 	}
@@ -89,7 +111,7 @@ public class CsvApp {
 		System.out.println("\nDigite o número correspondente a sua opção: ");
 	}
 	
-	public static void read(String path) {
+	public static void readFile(String path) {
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
 			System.out.println("");
@@ -104,12 +126,7 @@ public class CsvApp {
 		}
 	}
 	
-	/*
-	 File log = new File("log.txt");
-	 if(log.exists()==false)
-	 */
-	
-	public static void write(String path, String line) {
+	public static void writeLine(String path, String line) {
 		try(PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
 			writer.println(line);
 		}
@@ -118,5 +135,44 @@ public class CsvApp {
 		}
 	}
 	
+	public static void deleteLine(String path, String code) {
+		ArrayList<String> fileLines = new ArrayList<>();
+		ArrayList<String> deletedLines = new ArrayList<>();
+		
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+
+			String line = br.readLine();
+			while (line != null) {
+				if(code.intern() != line.split(",")[0].intern()) {
+					fileLines.add(line);
+				} else {
+					deletedLines.add(line);
+				}
+				
+				line = br.readLine();
+			}
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		
+		try(PrintWriter writer = new PrintWriter(new FileWriter(path))) {
+			for(String fileLine : fileLines) {
+				writer.println(fileLine);
+			}
+			System.out.println("\nProcesso Finalizado!!!");
+			if(deletedLines.isEmpty()) {
+				System.out.println("Nenhuma linha apresentou o código de doação especificado.");
+			} else {
+				System.out.println("\nLinhas apagadas: ");
+				for(String deletedLine : deletedLines) {
+					System.out.println(deletedLine);
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+	}
 	
 }
+// C:\\CSV\\doacoes.csv
