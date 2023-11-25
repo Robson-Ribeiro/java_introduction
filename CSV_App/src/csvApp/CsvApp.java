@@ -9,7 +9,21 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+* Classe voltada para realizar a manipulação de arquivo CSV, sendo possível visualizar, inserir ou apagar o conteúdo do arquivo.
+* @author Robson Ribeiro
+* @version 1.0
+* @see "https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html"
+*/
+
+
 public class CsvApp {
+	
+	/**
+     * Método estático utilizado para iniciar o programa.
+     * @param args  Recebe um array de strings. São os argumentos da command line.
+     */
+	
 	public static void main(String[] args) {
 		int option;
 		String filePath = "";
@@ -101,6 +115,10 @@ public class CsvApp {
 		return;
 	}
 	
+	/**
+     * Método estático responsável por apresentar o menu de opções para o usuário. Não apresenta parâmetro ou retorno.
+     */
+	
 	public static void showMenu() {
 		System.out.println("\nEssa aplicação oferece as seguintes opções: ");
 		System.out.println("1 - Efetuar a leitura do arquivo e apresentar na tela o seu conteúdo. ");
@@ -109,6 +127,11 @@ public class CsvApp {
 		System.out.println("9 - Sair. ");
 		System.out.println("\nDigite o número correspondente a sua opção: ");
 	}
+	
+	/**
+     * Método estático responsável por ler um arquivo CSV e apresentar seu conteúdo para o usuário. Não possui retorno.
+     * @param path Representa o caminho para acessar o arquivo. É do tipo String.
+     */
 	
 	public static void readFile(String path) {
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -125,6 +148,12 @@ public class CsvApp {
 		}
 	}
 	
+	/**
+     * Método estático responsável por escrever uma linha no arquivo CSV. Não possui retorno.
+     * @param path Informa o caminho para acessar o arquivo. É do tipo String.
+     * @param line Informa a linha que será adicionada no arquivo. É do tipo String.
+     */
+	
 	public static void writeLine(String path, String line) {
 		try(PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
 			writer.println(line);
@@ -133,6 +162,12 @@ public class CsvApp {
 			System.out.println("Error: " + e.getMessage());
 		}
 	}
+	
+	/**
+     * Método estático responsável por apagar uma linha no arquivo CSV. Não possui retorno.
+     * @param path Informa o caminho para acessar o arquivo. É do tipo String.
+     * @param code Informa o código da linha que deverá ser deletada. É do tipo String.
+     */
 	
 	public static void deleteLine(String path, String code) {
 		ArrayList<String> fileLines = new ArrayList<>();
