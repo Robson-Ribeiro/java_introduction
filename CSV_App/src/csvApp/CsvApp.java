@@ -13,7 +13,7 @@ import java.io.IOException;
 * Classe voltada para realizar a manipulação de arquivo CSV, sendo possível visualizar, inserir ou apagar o conteúdo do arquivo.
 * @author Robson Ribeiro
 * @version 1.0
-* @see "https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html"
+* @see <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html">Veja a documentação do javaDOC!</a>
 */
 
 
@@ -64,25 +64,26 @@ public class CsvApp {
 					
 				case 2:
 
-					String content = "";
+					String content;
 					System.out.println("");
 					System.out.println("Informe o código da doação: ");
-					content += sc.next();
+					sc.nextLine();
+					content = sc.nextLine();
 					content += ",";
 					System.out.println("Informe o nome do doador: ");
-					content += sc.next();
+					content += sc.nextLine();
 					content += ",";
 					System.out.println("Informe o CPF do doador: ");
-					content += sc.next();
+					content += sc.nextLine();
 					content += ",";
 					System.out.println("Informe a data de nascimento do doador: ");
-					content += sc.next();
+					content += sc.nextLine();
 					content += ",";
 					System.out.println("Informe o tipo sanguíneo do doador: ");
-					content += sc.next();
+					content += sc.nextLine();
 					content += ",";
 					System.out.println("Informe a quantidade em ml de sangue doado: ");
-					content += sc.next();
+					content += sc.nextLine();
 					writeLine(filePath, content);
 					System.out.println("\nAperte Enter para continuar...");
 					try {
@@ -93,6 +94,7 @@ public class CsvApp {
 					break;
 					
 				case 3:
+					
 					String donationCode;
 					System.out.println("\nInforme o código da doação que deseja deletar: ");
 					donationCode = sc.next();
@@ -116,7 +118,7 @@ public class CsvApp {
 	}
 	
 	/**
-     * Método estático responsável por apresentar o menu de opções para o usuário. Não apresenta parâmetro ou retorno.
+     * Método estático responsável por apresentar o menu de opções para o usuário. Não possui parâmetro ou retorno.
      */
 	
 	public static void showMenu() {
@@ -142,7 +144,7 @@ public class CsvApp {
 				System.out.println(line);
 				line = br.readLine();
 			}
-		} 
+		}
 		catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
