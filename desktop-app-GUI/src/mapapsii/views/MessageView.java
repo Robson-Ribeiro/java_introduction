@@ -5,6 +5,7 @@
 package mapapsii.views;
 
 import mapapsii.dom.Estadia;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -17,8 +18,11 @@ public class MessageView extends javax.swing.JFrame {
      */
     
     private Estadia estadia;
+    private DecimalFormat df;
     
     public MessageView(Estadia estadia) {
+        df = new DecimalFormat();
+        df.applyPattern("0.00");
         this.estadia = estadia;
         initComponents();
         respName.setText("Nome Responsável: " + estadia.getCrianca().getResponsavel().getRespName());
@@ -31,7 +35,7 @@ public class MessageView extends javax.swing.JFrame {
         ageKid.setText("Idade Criança: " + estadia.getCrianca().getAge());
         sex.setText("Sexo Criança: " + estadia.getCrianca().getSex());
         time.setText("Tempo no Brinquedo: " + estadia.getTime());
-        price.setText("Valor a Pagar: " + String.valueOf(estadia.serviceCost()));
+        price.setText("Valor a Pagar: " + String.valueOf(this.df.format(estadia.serviceCost())));
     }
     
     public MessageView() {
